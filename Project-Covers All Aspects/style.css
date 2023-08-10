@@ -1,0 +1,1432 @@
+/*  COLOR:: 
+#ffb900  #ff7730
+
+#2998ff  #5643fa
+
+ #7ed56f   #55c57a  #28b485*/
+
+ 
+*,*::after,*::before{
+  padding: 0;
+  margin: 0;
+ box-sizing: inherit;
+}
+html{
+  height: 300%;
+  /* font-size: 10px; */
+  /* this technique will make the browser to not to be able to change the font-size so what we will do is that we will take the percentage of our total size and than write it. As total size is 100%-16px so if we want to set it to 10px/16*100=62.5 percent then we would be able to help those users who would change the size of font in the browser this will help the user to zoom in our page */
+  font-size: 62.5%;
+}
+body{
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #777;
+  padding: 2rem;  
+  /* this was 3rem but due to my preference changed to 2rem */
+  box-sizing: border-box;
+
+  @media (max-width:56.25em){
+    /* for tablet */
+    padding: 0;
+ }
+}
+/* scroll-bar */
+/* width */
+::-webkit-scrollbar {
+  border-radius: 12px;
+  width: 1rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 12px;
+  background: #f1f1f1;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  border-radius: 12px;
+  background: #555;
+}
+.header{
+  height: 95vh;
+  background-image: linear-gradient(to right bottom,rgba(126, 213, 111, 0.8),
+  rgba(40, 180, 133, 0.8)),
+  url(./images/hero.jpg);
+  background-size:cover;
+  background-position: top;
+  /* clip-path: polygon(x y,x y, x y, x y); there are four point and every point will have a reference of the place from where we compared the first-one*/
+  -webkit-clip-path: polygon(0 0,100% 0, 100%  75vh, 0 100%);
+  clip-path: polygon(0 0,100% 0, 100%  75vh, 0 100%);
+  position: relative;
+}
+.header__logo-box{
+ position: absolute;
+ top: 3.5rem;
+ left: 3rem;
+}
+.header__logo{
+height: 3.5rem;
+}
+.header__text-box{
+  position:absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  /* transform: translate(-50%, -50%);: The transform property applies a 2D or 3D transformation to the element. In this case, translate(-50%, -50%) is used to move the element horizontally and vertically by -50% of its own width and height, respectively. Since the element is already centered using top: 50% and left: 50%, this additional translation effectively centers the element perfectly both vertically and horizontally within its container. */
+  text-align: center;
+}
+.heading-primary{
+color: #fff;
+text-transform: uppercase;
+backface-visibility: hidden;
+margin-bottom: 6rem;
+}
+.heading-primary--main{
+display: block;
+font-size: 6rem;
+font-weight: 400;
+letter-spacing: 3.5rem;
+animation-name: moveInLeft;
+animation-duration: 1s;
+animation-timing-function: ease-out;
+/* animation-delay: .5s; */
+@media (max-width:37.5em){
+  /* for tablet */
+ letter-spacing: 1rem;
+ font-size: 5rem;
+}
+} 
+.heading-primary--sub{
+display: block;
+font-size: 2rem;
+font-weight: 700;
+letter-spacing: 1.75rem;
+animation-name:moveInRight;
+animation-duration: 1s;
+animation-timing-function: ease-out;
+/* animation-delay: .5s; */
+@media (max-width:37.5em){
+  /* for tablet */
+ letter-spacing: .5rem;
+ /* font-size: 5rem; */
+}
+}
+@keyframes moveInLeft{
+  0%{
+    opacity:0;
+    transform:translateX(-10rem)
+  }
+  80%{
+   opacity:0.5;
+   transform:translateX(1rem);
+  }
+  100%{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+@keyframes moveInRight{
+  0%{
+    opacity:0;
+    transform:translateX(10rem)
+  }
+  80%{
+   opacity:0.5;
+   transform:translateX(-1rem);
+  }
+  100%{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+@keyframes moveInBottom {
+  0%{
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  100%{
+  opacity: 1;
+  transform: translateY(0);
+  }
+}
+.btn,.btn:link,.btn:visited{
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  /* display: inline-block does not add a line-break after the element, so the element can sit next to other elements. */
+  border-radius:10rem;
+  transition: all .2s;
+  position: relative;
+  font-size: 1.6rem;
+  font-weight: 700;
+
+  /* these changes are made for the  button which is added in th Input-form page*/
+  border: none;
+  cursor: pointer;
+}
+.btn:hover,.btn:focus{
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(0,0,0,0.2);
+  /* now here first value is for x direction second for y and third is the blurness that show creates */
+}
+.btn:active,.btn:focus{
+  transform: translateY(-0.1rem);
+}
+.btn-white{
+  background: #fff;
+  color: #777;
+}
+/* desiging the button discover all tours */
+/* this code from 171 - 175 its for green button */
+.btn-green{
+  background:#55c57a;
+  color: white;
+}
+
+.btn::after{
+  content: "";
+  display: inline-block;  
+/* these both need be to written in order for after-psuedo element to work else it will not work*/
+height: 100%;
+width: 100%;
+border-radius: 10rem;
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+transition:all .4s;
+}
+.btn-white::after{
+  background: #fff;
+}
+/* this code from 193 - 196 its for green button */
+.btn-green::after{
+  background: #55c57a;
+}
+.btn:hover::after{
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+.btn-animated{
+  animation-name: moveInBottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0.75s;
+  animation-fill-mode: backwards;
+}
+ /* this is for section-about */
+ .section-about{
+  background: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -20vh;
+  /* padding-bottom: 50rem; */
+ }
+ .heading-secondary{
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f,#28b485);
+  -webkit-background-clip: text;
+  background-clip: text; 
+  /* here arises a problem if we dont write the upper code so to fix it stackoverflow says
+  It means you should add the standard style rule (box-shadow) in addition to the vendor prefixed version (-webkit-box-shadow)
+
+.scrollbar-black::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1); // <- Add this to fix.    
+    background-color: #000;
+} */
+color: transparent;
+letter-spacing: 0.2rem;
+transition: all;
+transition-duration: .2s;
+transition-timing-function: ease-in-out;
+
+/* media query */
+@media(max-width:56.25em)
+{
+  font-size: 2.5rem;
+}
+@media(max-width:37.5em)
+{
+  font-size: 2rem;
+}
+ }
+ .heading-secondary:hover{
+  transform: skewY(2deg) skewX(15deg) scale(1.1);
+  text-shadow: .5rem 1rem 2rem rgba(0,0,0,0.2);
+ }
+ /* utility class  */
+ .u-center-text{
+  text-align: center !important;
+ }
+ .u-margin-bottom-big{
+  margin-bottom:8rem  !important;
+ }
+ .u-margin-bottom-small{
+  margin-bottom: 1.5rem !important;
+ }
+ .u-margin-top-big{
+  margin-top: 8rem !important;
+ }
+ .u-margin-top-medium{
+  margin-top: 4rem !important;
+ }
+ .u-margin-bottom-medium{
+  margin-bottom: 4rem !important;
+ }
+ .u-margin-top-huge{
+  margin-top: 10rem !important;
+ }
+ /* this part is for the rows that we are creating in this project using float */
+
+ .row{
+  max-width: 114rem;
+  margin: 0 auto;
+  /* @include clearFix; */
+ }
+ .row:not(:last-child){
+  margin-bottom: 8rem;
+ }
+ 
+ 
+/* [class^="col-"]{
+  
+  @media(max-width:56.25em)
+  {
+    max-width: 100% !important;
+  }
+} */
+ .col-1-of-2{
+  width: calc( (100% - 6rem) / 2);
+ 
+  float: left;
+ 
+ }
+.col-1-of-2:not(:last-child){
+   margin-right: 6rem;
+ 
+ }
+
+ .col-1-of-4{
+  width: calc((100% - 3 * 6rem ) / 4);
+  float: left;
+ /* background: orangered; */
+
+}
+.col-1-of-4:not(:last-child){
+  margin-right: 6rem;
+ 
+}  
+.col-1-of-3{
+  width: calc( (100% - 2 * 6rem) / 3 );
+  /* background-color: orangered; */
+  float: left;
+}
+.col-1-of-3:not(:last-child){
+  margin-right: 6rem;
+}
+.row::after{
+  content:"";
+  display:table;
+  clear:both;}
+
+
+ /* [class^="col-"]
+{
+   
+   float: left;
+}
+[class^="col-"]:not(:last-child)
+{
+  margin-right: 6rem;
+} */
+
+ /* for text */
+.tertiary-heading{
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph{
+  font-size: 1.rem;
+}
+.paragraph:not(:last-child){
+  margin-bottom: 3rem;
+}
+/* for text button */
+/* or you may say learn-more button */
+.btn-text:link,.btn-text:visited{
+  font-size: 1.6rem;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #55c57a;
+  border-bottom: 1px solid #55c57a;
+  padding: 0.3rem;
+  transition: all;
+  transition-duration: .2s;
+}
+.btn-text:hover{
+ background-color: #55c57a;
+ color: white;
+ box-shadow: 0 1rem 2rem rgba(0,0,0,0.2);
+ transform: translateY(-2px);
+}
+.btn-text:active{
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+  transform: translateY(0);
+}
+
+/* styling the added photos in second phase */
+.composition{
+  position: relative;
+}
+.composition__image{
+  width: 55%;
+  box-shadow: 0 1.5rem 4rem rgba(0,0,0,0.4) ;
+  /* border-radius: 2px;  if we romove this than the radial disappears from around the pics*/
+  position: absolute;
+  z-index: 10;
+  transition: all .2s;
+  outline-offset: 2rem;
+}
+.composition__image--p1{
+  left: 0;
+  top: -2rem;
+}
+.composition__image--p2{
+  right: 0;
+  top: 2rem;
+}
+.composition__image--p3{
+  left: 20%;
+  top: 10rem;
+}
+.composition__image--p1:hover,.composition__image--p2:hover,.composition__image--p3:hover{
+  transform: scale(1.05) translateY(-.5rem);
+  box-shadow: 0 2rem 4rem rgba(0,0,0,0.5) ;
+  z-index: 20;
+  outline: 1.5rem solid #55c57a;
+}
+.composition:hover .composition__image:not(:hover){
+  transform: scale(.95);
+}
+
+/* section of features */
+
+.section-features{
+  
+  padding: 20rem 0;
+  background-image: linear-gradient(to right bottom,rgba(126, 213, 111, 0.8),
+  rgba(40, 180, 133, 0.8)),
+  url(./images/nat-4.jpg);
+  background-size: cover;
+  /* we could use this but heres another trickclip-path: polygon(0 21%, 100% 5%, 100% 86%, 0% 100%); */
+  margin-top: -10rem;
+  transform: skewY(-7deg);
+}
+/* line 365-368 contains the code that will unskew the inner content of the section box that we have so that the skew only applies to the parent*/
+.section-features>*{
+  transform: skewY(7deg);
+}
+.feature-box{
+ /* margin: auto; */
+  background-color: rgb(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0,0,0,0.15);
+  transition: transform .3s; 
+}
+.feature-box__icon{
+  font-size: 6rem;
+  margin-bottom: .5rem;
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f,#28b485);
+  -webkit-background-clip: text;
+  background-clip: text; 
+  color:transparent;
+  
+}
+.feature-box:hover{
+ transform: translateY(-1.5rem) scale(1.03);
+}
+
+
+/*now this section represents the tours part  */
+/*  COLOR:: 
+#ffb900  #ff7730
+
+#2998ff  #5643fa
+
+ #7ed56f   #55c57a  #28b485*/
+
+.section-tours{
+  background: #f7f7f7;
+  /* background: black; */
+  padding: 25rem 0 15rem 0;
+  margin-top: -10rem;
+}
+/* functionality of cards */
+.card{
+  /* what is a perspective ?
+   Answer : The perspective CSS property determines the distance between the z=0 plane and the user in order to give a 3D-positioned element some perspective. */
+  perspective: 150rem;
+  -moz-perspective: 150rem;  /* to make this work in mozilla firefox we have to use  */
+  position: relative;
+
+  /* when we give the abosolute position to the childs the hieght of the parent collapse so we have to give it a hieght here in our case we are giving it the same as of its child due to our design */
+  height: 52rem;
+}
+.card__side{
+  height: 52rem;
+  transition: all .8s;
+  transition-timing-function: ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  backface-visibility: hidden;
+  border-radius: 2px ;
+  overflow: hidden;
+  box-shadow: 0 1.5rem 4rem rgba(0,0,0,0.15);
+}
+.card__side--front{
+  background-color:white;
+}
+.card__side--back{
+  
+  transform: rotateY(180deg);
+}
+.card__side--back-1{
+  background-image: linear-gradient(to right bottom, #ffb900,  #ff7730 );
+}
+.card__side--back-2{
+  background-image: linear-gradient(to right bottom, #7ed56f  , #55c57a);
+}
+.card__side--back-3{
+  background-image: linear-gradient(to right bottom, #2998ff , #5643fa );
+}
+.card:hover .card__side--front{
+    transform: rotateY(-180deg);
+}
+.card:hover .card__side--back{
+  transform: rotateY(0);
+}
+/* Front Side styling */
+.card__picture{
+background-size:cover ;
+height: 23rem;
+background-blend-mode: screen;
+-webkit-clip-path: polygon(100% 85%, 0 100%, 0% 0%, 100% 0);
+clip-path: polygon(100% 85%, 0 100%, 0% 0%, 100% 0);
+/* this radius is added again cuz somehow when we use clip-path it cancels the overflow and border-radius is not applied on th  picture */
+border-top-left-radius: 2px;
+border-top-right-radius: 2px;
+} 
+.card__picture--1{
+  background-image:  linear-gradient(to right bottom, #ffb900,  #ff7730 ),url(./images/nat-5.jpg);
+}
+.card__picture--2{
+  background-image:  linear-gradient(to right bottom, #7ed56f  , #55c57a ),url(./images/nat-6.jpg);
+}
+.card__picture--3{
+  background-image:  linear-gradient(to right bottom, #2998ff , #5643fa ),url(./images/nat-7.jpg);
+}
+.card__heading{
+  position: absolute;
+  top: 12rem;
+ right: 2rem;
+  text-align: right;
+  font-size:2.8rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: white;
+  width: 75%;
+}
+
+.card__heading-span{
+padding: 1rem 1.5rem;
+-webkit-box-decoration-break: clone;
+box-decoration-break: clone;
+
+}
+.card__heading-span--1{
+  background-image: linear-gradient(to right bottom, 
+  rgb(255, 185, 0,.85), rgb(255, 119, 48,.85));
+}
+
+.card__heading-span--2{
+  background-image: linear-gradient(to right bottom, 
+  rgb(126, 213, 111,.85), rgb(85, 197, 122,.85));
+}
+.card__heading-span--3{
+  background-image: linear-gradient(to right bottom, 
+  rgb(41, 152, 255,.85) , rgb(86, 67, 250,.85));
+}
+
+.card__details{
+  padding: 3rem;
+}
+.card__details__ul{
+list-style: none;
+width: 80%;
+margin: auto;
+} 
+.details__li{
+text-align: center;
+font-size:1.5rem;
+padding: 1rem;
+}
+.details__li:not(:last-child){
+  border-bottom: 1px solid #eee;
+}
+
+
+/* back-side of card styling */
+
+
+.card__cta{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+width: 90%;
+text-align: center;
+}
+.card__price-box{
+text-align: center;
+margin-bottom: 8rem;
+color: white;
+}
+.card__price-only{
+font-size: 1.4rem;
+text-transform: uppercase;
+}
+.card__price-value{
+  font-size: 6rem;
+font-weight: 100;
+
+}
+
+/* The green -button is designed in the following lines*/
+/* this code from 171 - 175 its for green button */
+/* this code from 193 - 196 its for green button */
+
+
+/* Stories section */
+
+.section-stories{
+  padding: 15rem 0;
+  /* background-color: #f7f7f7; */
+  position: relative;
+}
+.story{
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem  6rem (rgba(0,0,0,0.1));
+  background:rgb(255, 255, 255,.6);
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: 1.rem;
+  transform: skewX(-12deg);
+}
+
+.story__shape{
+  /* shape outside property is the only property that requires dimensions as well as the element to be in float */
+  width: 15rem;
+  height: 15rem;
+  float: left;
+  /* background: orangered; */
+  -webkit-outside:circle(50% at 50% 50%) ;
+  shape-outside: circle(50% at 50% 50%);
+
+  -webkit-clip-path:circle(50% at 50% 50%);
+  clip-path:circle(50% at 50% 50%);
+  transform: translateX(-3rem) skewX(12deg);
+
+  position: relative;
+  
+}
+.story__image{
+  height: 100%;
+  transition: all .5s;
+  transform: translateX(-4rem) scale(1.4);
+  backface-visibility: hidden;
+}
+.story__text{
+  transform: skewX(12deg);
+}
+.story__caption{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 20%) ;
+  color: white;
+  text-transform:uppercase;
+  text-align: center;
+  font-size: 1.7rem;
+  opacity: 0;
+  transition: all .5s;
+  backface-visibility: hidden;
+}
+.story:hover .story__caption{
+opacity: 1;
+transform:translate(-50%, -50%);
+}
+
+.story:hover .story__image{
+  transform: translateX(-4rem) scale(1);
+  filter: blur(.3rem) brightness(80%);
+}
+
+/* the learn more button is styled up. It was of the same desgin thats why */
+
+/* now Giving the video background */
+.bg-video{
+  position: absolute;
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: .15;
+  overflow: hidden;
+}
+.bg-video__content{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* This portion is for booking section */
+
+
+/*now this section represents the tours part  */
+/*  COLOR:: 
+#ffb900  #ff7730
+
+#2998ff  #5643fa
+
+ #7ed56f   #55c57a  #28b485*/
+
+.section-book{
+  padding: 15rem 0;
+  background-image: linear-gradient(to right bottom,#7ed56f , #28b485 );
+}
+.book{
+  background-image: linear-gradient(105deg,rgb(255, 255, 255,0.9) 0%, 
+  rgb(255, 255, 255,0.9) 50%,
+  transparent 50%)  
+   
+   ,url(./images/nat-10.jpg);
+  background-size:cover;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0,0,0,0.15);
+  /* height: 50rem; just to testing purpose */
+}
+.book__form{
+width: 50%;
+padding: 6rem;
+}
+
+/* form component inside */
+
+/* .form{
+
+} */
+.form__group:not(:last-child){
+  margin-bottom: 2rem;
+}
+.form__input{
+font-size: 1.5rem;
+color: inherit;
+font-family: inherit;
+padding: 1.5rem 2rem;
+border-radius: 2px;
+background-color: rgb(255, 255, 255,.5);
+border: none;
+border-bottom:3px solid  transparent;
+width: 90%;
+display: block;
+transition:all .3s;
+}
+.form__input:focus{
+  outline: none;
+  box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
+  border-bottom:3px solid #55c57a  ;
+}
+.form__input:focus:invalid{
+  border-bottom:3px solid #ff7730 ;
+}
+.form__input::-webkit-input-placeholder{
+  color: #999;
+}
+.form__label{
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-left: 2rem;
+  margin-top: .7rem;
+  display: block;
+  transition: all .3s;
+}
+.form__input:placeholder-shown + .form__label{
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4rem);
+}
+/* radio btn below the input */
+
+.form__radio-group{
+  padding: 1.3rem;
+  width: 49%;
+  display: inline;
+}
+.form__radio-label{
+  font-size: 1.6rem;
+  cursor: pointer;
+  position: relative;
+  padding-left: 5rem;
+}
+/* creating custom radio button and hiding the default one */
+.form__radio-btn{
+height: 3rem;
+width: 3rem;
+border: 5px solid #55c57a;
+display: inline-block;
+border-radius: 50%;
+position: absolute;
+left:0;
+top: -.4rem;
+}
+.form__radio-btn::after{
+  content: "";
+  display: block;
+ height: 1.3rem;
+ width: 1.3rem;
+border-radius: 50%;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+background-color: #55c57a;
+opacity: 0;
+transition: all .2s;
+}
+.form__radio-input:checked ~ .form__radio-label .form__radio-btn::after {
+ opacity: 1;
+}
+.form__radio-input{
+  display: none;
+}
+
+/* footer */
+
+.footer{
+  background-color: #333;
+  padding: 10rem 0rem;
+  font-size: 1.4rem;
+
+}
+.footer__logo-box{
+text-align: center;
+margin-bottom: 8rem;
+}
+.footer__logo{
+width: 15rem;
+height: auto;
+}
+.footer__navigation{
+border-top: 1px solid #eee;
+padding-top: 2rem;
+display: inline-block;
+}
+.footer__list{
+  list-style: none;
+}
+.footer__item{
+display: inline-block;
+}
+.footer__item:not(:last-child){
+  margin-right: 2rem;
+}
+.footer__link:link,.footer__link:visited{
+color: #f7f7f7f7;
+background-color: #333;
+text-decoration: none;
+text-transform: uppercase;
+display: inline-block;
+transition: all .2s;
+}
+.footer__link:hover,.footer__link:active{
+  color: #55c57a;
+  box-shadow: 0 1rem 2rem rgba(0,0,0,0.4);
+  transform: rotate(5deg) scale(1.3 );
+}
+.footer__copyright{
+  border-top: 1px solid #eee;
+padding-top: 2rem;
+width: 80%;
+float: right;
+}
+
+/* Navigation system of the page */
+
+/*  COLOR:: 
+#ffb900  #ff7730
+
+#2998ff  #5643fa
+
+ #7ed56f   #55c57a  #28b485*/
+
+/* .navigation{
+this class is not used but maybe used in future
+} */
+.navigation__checkbox{
+display: none;
+}
+.navigation__button{
+  background-color: white;
+  height: 7rem;
+  width: 7rem;
+  position: fixed;
+  top: 6rem;
+  right: 6rem;
+border-radius: 50%;
+z-index: 2000;
+box-shadow: 0 1rem 3rem rgba(0,0,0,0.1);
+text-align: center;
+cursor: pointer;
+}
+.navigation__background{
+height: 6rem;
+width: 6rem;
+border-radius: 50%;
+position: fixed;
+top:6.5rem;
+right: 6.5rem;
+background-image: radial-gradient( #7ed56f , #28b485);
+z-index: 1000;
+transition: transform .8s cubic-bezier(0.83, 0, 0.17, 1);
+}
+.navigation__nav{
+height: 100vh;
+position: fixed;
+top:0;
+left: 0; /*I would turn this to left if It futher creates any problem till now there were none*/
+z-index: 1500;
+opacity: 0;
+width: 0;
+transition: all .8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+.navigation__list{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+list-style: none;
+text-align:center;
+width: 100%;
+}
+.navigation__item{
+margin: 1rem;
+}
+.navigation__link:link,.navigation__link:visited{
+  display: inline-block;
+font-size: 3rem;
+font-weight: 300;
+padding: 1rem 2rem;
+color: white;
+text-decoration: none;
+text-transform: uppercase;
+background-image: linear-gradient(120deg,transparent 0%, transparent 50%, white 50%);
+background-size:220%;
+transition: all .4s;
+}
+.navigation__link:hover,.navigation__link:active{
+  background-position: 100%;
+  color: #7ed56f;
+  transform: translateX(1rem);
+}
+.navigation__span{
+  margin-right: 1.5rem;
+  display: inline-block;
+}
+/* functionality */
+.navigation__checkbox:checked ~.navigation__background{
+  transform: scale(80);
+}
+.navigation__checkbox:checked ~.navigation__nav{
+  opacity: 1;
+  width: 100%;
+}
+
+/* ICON */
+.navigation__icon{
+  position: relative;
+ margin-top: 3.5rem;
+}
+.navigation__icon,.navigation__icon::before,.navigation__icon::after{
+  width: 3rem;
+  height: 2px;
+  background-color: #333;
+  display: inline-block;
+}
+.navigation__icon::before,.navigation__icon::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  transition: top .2s;
+}
+.navigation__icon::before{
+  top: -.8rem;
+}
+.navigation__icon::after{
+  top:.8rem;
+}
+/* to move the icon bands up a bit on hover */
+.navigation__button:hover .navigation__icon::before{
+  top:-1rem;
+}
+.navigation__button:hover .navigation__icon::after{
+  top:1rem;
+}
+
+/* applying the cross element */
+.navigation__checkbox:checked + .navigation__button .navigation__icon{
+  background-color: transparent;
+}
+.navigation__checkbox:checked + .navigation__button .navigation__icon::after{
+  top: 0;
+  transform: rotate(-135deg);
+}
+.navigation__checkbox:checked + .navigation__button .navigation__icon::before{
+  top: 0;
+    transform: rotate(135deg);
+}
+
+/* popUp Element Code */
+.popup{
+height: 100vh;
+width: 100%;
+position: fixed;
+top: 0;
+left: 0;
+background: rgba(0,0,0,.8);
+z-index: 3000;
+opacity: 0;
+visibility: hidden;
+transition: all .3s;
+}
+
+
+.popup__content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  width: 75%;
+  box-shadow: 0 2rem 4rem rgba(0,0,0,0.2);
+  border-radius: 3px;
+  display: table;
+  overflow: hidden;
+  opacity: 0;
+  transform: translate(-50%,-50%) scale(0);
+  transition: all .4s;
+  transition-delay: .2s;
+}
+
+.popup__left{
+width: 33.333333%;
+display: table-cell;
+}
+.popup__img{
+  display: block;
+  width: 100%;
+}
+.popup__right{
+width: 66.666666%;
+display: table-cell;
+vertical-align: middle;
+padding: 3rem 5rem;
+}
+.popup__text{
+font-size: 1.4rem;
+margin-bottom: 4rem;
+/* we would also have to use the webkit and other for the use of this in other browsers */
+column-count: 2;
+column-gap: 4rem;  /* 1rem=14px */
+column-rule: 1px solid #eee;
+/* the upper three are for the browsers that doesnt support this porperty */
+-moz-hyphens: auto;
+-ms-hyphens: auto;
+-webkit-hyphens: auto;
+hyphens: auto;
+}
+
+/* cross button to close popup */
+/* open states from 1047 to 1055 */
+.popup:target{
+  opacity: 1;
+  visibility: visible;
+}
+.popup:target .popup__content{
+opacity: 1;
+transform: translate(-50%,-50%)  scale(1);
+}
+.popup__close{
+  text-decoration: none;
+}
+.popup__close:link,.popup__close:visited{
+  color: #777;
+  position: absolute;
+  top: 2.5rem;
+  right: 2.5rem;
+  font-size: 3rem;
+  display: inline-block;
+  transition: all .2s;
+  line-height: 1;
+}
+.popup__close:hover{
+  color: #55c57a;
+} 
+
+
+/* Responsiveness*/
+/* Media Queries Manager */
+/* 
+0-600px Phone
+600px-900px Tablet Portrait
+900-1200px Table landscape
+1200-1800px where normal styles apply
+1800px + Big Desktop 
+
+1em=16px
+1rem=10px
+*/
+/* 600px 
+@media (max-width:37.5em) {  
+ html{
+  font-size: 50%;
+ }
+} */
+
+
+/* 1200px */
+@media (max-width:75em){
+   /* for tablet landscape */
+  html{
+    font-size: 56.25%;
+   }
+ 
+}
+/* 900px */
+@media (max-width:56.25em){
+   /* for tablet */
+  html{
+    font-size: 50%;
+   }
+ 
+}
+/* 1800px */ 
+@media (min-width:112.5em){
+  /* for big Desktop */
+  html{
+    font-size:75%;
+   }
+  
+}
+
+/* media queries for changing columns and rows etc
+margin-bottom:6rem; */
+/* tablet landscape */
+@media(max-width:75em)
+{
+  /* For Booking Section */
+  .book{
+    background-image: linear-gradient(105deg,rgb(255, 255, 255,0.9) 0%, 
+    rgb(255, 255, 255,0.9) 65%,
+    transparent 65%)  
+     
+     ,url(./images/nat-10.jpg);
+  }
+  .book__form{
+    width: 70%;
+  }
+}
+/* tablet Mode-Portrait */
+@media(max-width:56.25em)
+{
+ .row:not(:last-child){
+  margin-bottom: 6rem;
+ }
+ .row{
+  max-width: 50rem;
+  padding: 0 3rem;
+ }
+ .col-1-of-2:not(:last-child){
+  margin-right: 0;
+  margin-bottom:6rem;
+ }
+ .col-1-of-4:not(:last-child){
+   margin-right: 0;
+   margin-bottom:6rem;
+  }
+  .col-1-of-3:not(:last-child){
+   margin-right: 0;
+   margin-bottom:6rem;
+  }
+  .col-1-of-2{
+    width: 100%  !important;
+  }
+  .col-1-of-3{
+    width: 100%  !important;
+  }
+  .col-1-of-4{
+    width: 100%  !important;
+  }
+
+  /* for navigation icon or button */
+  .navigation__button{
+    top: 4rem;
+    right: 4rem;
+  }
+  .navigation__background{
+    top: 4.5rem;
+    right: 4.5rem;
+  }
+
+  /* for adjusting the footer */
+
+  .footer{
+    padding: 8rem 0;
+  }
+  .footer__navigation{
+    text-align: center;
+    width: 100%;
+  }
+  .footer__copyright{
+    width: 100%;
+    float: none;
+  }
+  .footer__logo-box{
+    margin-bottom: 6rem;
+  }
+
+  /* section about */
+  .section-about{
+    padding: 20rem 0;
+  }
+  .section-features{
+    padding: 10rem 0;
+  }
+  .section-tours{
+    padding: 20rem 0 10rem 0;
+  }
+  .section-stories{
+    padding: 10rem 0;
+  }
+  .section-book{
+    padding: 10rem 0;
+  }
+  /* adding media queries to utility classes */
+  .u-margin-bottom-big{
+    margin-bottom: 5rem !important;
+  }
+  .u-margin-bottom-medium{
+    margin-bottom: 3rem !important;
+  }
+  .u-margin-bottom-small{
+    margin-bottom: 1rem !important;
+  }
+
+  /* for images of composition */
+  .composition__image{
+    float: left;
+    position: relative;
+    width: 33.3333333%;
+    box-shadow: 0 1.5rem 3rem rgba(0,0,0,.2);
+  }
+  .composition__image--p1{
+    top: 0;
+    transform: scale(1.2);
+  }
+  .composition__image--p2{
+    top: -1rem;
+    transform: scale(1.3);
+    z-index: 100;
+  }
+  .composition__image--p3{
+    top: 1rem ;
+    left: 0;
+    transform: scale(1.1);
+  }
+
+  /* now for the feature box */
+
+  .feature-box{
+    padding: 2rem;
+  }
+  .feature-box__icon{
+    margin-bottom: 0;
+  }
+
+  /* for section booking */
+  
+  .card{
+    height: auto;
+    border-radius: 3px;
+    background-color: white;
+    box-shadow:0 1.5rem 4rem rgba(0,0,0,.15) ;
+  }
+  .card__side{
+    height: auto;
+    position: relative;
+    box-shadow: none;
+  }
+  .card__side--back{
+    transform:rotateY(0);
+    -webkit-clip-path: polygon(0 15%,100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 15%,100% 0, 100% 100%, 0 100%);
+    /* top: -4rem; */
+
+  }
+  .card:hover .card__side--front{
+    transform:rotateY(0);
+  }
+  .card:hover .card__side--back{
+    transform:rotateY(0);
+  }
+  .card__details{
+    padding: 1rem 3rem;
+  }
+  .card__cta{
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translate(0);
+    width: 100%;
+    padding: 7rem 4rem 4rem 4rem;
+  }
+  .card__price-box{
+    margin-bottom: 3rem;
+
+  }
+  .card__price-value{
+    font-size: 4rem;
+  }
+  
+  /* now agjusting the stories section */
+  .story{
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem;
+  }
+
+  /* For Booking Section */
+  .book{
+    background-image: linear-gradient(to right,rgb(255, 255, 255,0.9) 0%, 
+    rgb(255, 255, 255,0.9) 100%)   
+    ,url(./images/nat-10.jpg);
+  }
+  .book__form{
+    width: 100% ;
+  }
+  /* radio button adjustment in the form */
+  .form__radio-group{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  /* input space adjustment in the form */
+    /* radio button adjustment in the form */
+    .form__input{
+      width: 100%;
+    }
+  
+    /* for Popup */
+    .popup__content{
+      padding-bottom: 1rem;
+      padding-left: 1rem;
+      padding-right:1rem ;
+      padding-top: 0;
+      text-align: center;
+    }
+    .popup__content p{
+      text-align: left;
+    }
+    .popup__left{
+      display: table-row;
+      vertical-align: bottom;
+    /* width: 33.33333%; */
+    }
+    .popup__right{
+      display: table-row;
+      vertical-align: top;
+    /* width: 67.77777%; */
+    }
+    .popup__img{
+      display: inline;
+      margin-top: 3rem;
+      width: 35%;
+      padding:1rem;
+    }
+    /* I dont know there is a little problem that the images dimensions does not match for which I am checking again and again but dont know the problem yet, Have to look for that */
+}
+/* Mobile-Phone */
+@media(max-width:37.5em)
+{
+  .header{
+    -webkit-clip-path: polygon(0 0,100% 0, 100%  85vh, 0 100%);
+    clip-path: polygon(0 0,100% 0, 100%  85vh, 0 100%);
+  }
+   /* for navigation icon or button */
+  .navigation__button{
+    top:3rem;
+    right:3rem;
+  }
+  .navigation__background{
+    top: 3.5rem;
+  right: 3.5rem;
+  }
+
+  /* section stories */
+  .story{
+    transform: skewX(0);
+  }
+  .story__shape{
+    transform: translateX(-3rem) skewX(0);
+  }
+  .story__text{
+    transform: skewX(0);
+  }
+}
+/* Native CSS mixins would not be using this its a bit more complex and require any preprocessor like scss or sass etc */
+/* :root {
+  --my-mixinAbsCenter: {                
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+  }
+} */
+
+
